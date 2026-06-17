@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Possible Account Compromise",
+    "alert": "Multiple failed login attempts from an unusual country followed by a successful login to an administrator account."
+  },
+  {
+    "name": "Suspicious PowerShell",
+    "alert": "Endpoint alert detected PowerShell with encoded command and execution policy bypass on a finance workstation."
+  },
+  {
+    "name": "Phishing Email",
+    "alert": "User reported a suspicious email asking for password verification through an external link."
+  },
+  {
+    "name": "Possible Data Exfiltration",
+    "alert": "Large upload of sensitive data to an external destination from a user laptop after business hours."
+  },
+  {
+    "name": "Malware Detection",
+    "alert": "Endpoint security quarantined a suspicious executable with a known malware hash."
+  }
+]
+
