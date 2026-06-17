@@ -25,8 +25,8 @@ def index():
                 app.logger.warning("Alert text exceeds max allowed length (%d).", MAX_ALERT_CHARS)
                 result = {"error": f"Alert text too long (max {MAX_ALERT_CHARS} characters)."}
             else:
-            try:
-                classification = classify_alert(alert_text)
+                try:
+                    classification = classify_alert(alert_text)
                 playbook = get_playbook(classification.get("incident_type"))
 
                 result = {
