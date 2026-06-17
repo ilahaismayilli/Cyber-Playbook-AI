@@ -27,13 +27,13 @@ def index():
             else:
                 try:
                     classification = classify_alert(alert_text)
-                playbook = get_playbook(classification.get("incident_type"))
+                    playbook = get_playbook(classification.get("incident_type"))
 
-                result = {
-                    "alert_text": alert_text,
-                    "classification": classification,
-                    "playbook": playbook,
-                }
+                    result = {
+                        "alert_text": alert_text,
+                        "classification": classification,
+                        "playbook": playbook,
+                    }
             except Exception:
                 # Do not return internal exception details to clients; log server-side instead
                 app.logger.exception("Error processing alert")
