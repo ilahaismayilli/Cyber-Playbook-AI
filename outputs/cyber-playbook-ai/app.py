@@ -22,22 +22,31 @@ def index():
 
         if alert_text:
             if len(alert_text) > MAX_ALERT_CHARS:
-                app.logger.warning("Alert text exceeds max allowed length (%d).", MAX_ALERT_CHARS)
-                result = {"error": f"Alert text too long (max {MAX_ALERT_CHARS} characters)."}
+                app.logger.warning(
+                    "Alert text exceeds max allowed length (%d).",
+                    MAX_ALERT_CHARS,
+                )
+                result = {
+                    "error": f"Alert text too long (max {MAX_ALERT_CHARS} characters)."
+                }
             else:
                 try:
                     classification = classify_alert(alert_text)
-                    playbook = get_playbook(classification.get("incident_type"))
+                    playbook = get_playbook(
+                        classification.get("incident_type")
+                    )
 
                     result = {
                         "alert_text": alert_text,
                         "classification": classification,
                         "playbook": playbook,
                     }
-            except Exception:
-                # Do not return internal exception details to clients; log server-side instead
-                app.logger.exception("Error processing alert")
-                result = {"error": "An internal error occurred while processing the alert."}
+                except Exception:
+                    # Do not return internal exception details to clients; log server-side instead
+                    app.logger.exception("Error processing alert")
+                    result = {
+                        "error": "An internal error occurred while processing the alert."
+                    }
 
     return render_template("index.html", result=result, alert_text=alert_text)
 
